@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hellonong/home.dart';
 import 'package:hellonong/util/color_schemes.g.dart';
 import 'package:hellonong/widget/appbar.dart';
 import 'package:hellonong/widget/bottomNavi.dart';
@@ -134,22 +135,32 @@ class _ResultState extends State<Result> {
               alignment: Alignment.topCenter,
               child: Padding(
                 padding: EdgeInsets.only(top: 20),
-                child: Container(
-                  width: screenWidth * 0.9,
-                  height: screenHeight * 0.07,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary, // 파랑색으로 변경
-                    borderRadius: BorderRadius.circular(35),
-                    border: Border.all(
-                      color: Color(0xFFC1C1C1),
-                      width: 1,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MyHomePage(), // 이동할 페이지 위젯
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: screenWidth * 0.9,
+                    height: screenHeight * 0.07,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary, // 파랑색으로 변경
+                      borderRadius: BorderRadius.circular(35),
+                      border: Border.all(
+                        color: Color(0xFFC1C1C1),
+                        width: 1,
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.check,
-                      color: Colors.white,
-                      size: 50, // 아이콘 크기 조정
+                    child: Center(
+                      child: Icon(
+                        Icons.check,
+                        color: Colors.white,
+                        size: 50, // 아이콘 크기 조정
+                      ),
                     ),
                   ),
                 ),

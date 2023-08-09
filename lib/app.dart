@@ -41,7 +41,7 @@ class MyAppState extends ChangeNotifier {
   List<String> imageURLs = [];
   List<String> ids = [];
 
-  int get favoriteCount => bags.length; // 즐겨찾기한 상품의 개수를 리스트의 길이로 계산
+  int get favoriteCount => bags.length; // 장바구니에 담은 상품의 개수를 리스트의 길이로 계산
 
   List<String> wishids = [];
 
