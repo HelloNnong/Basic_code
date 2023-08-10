@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+
 import '../bag.dart';
 import '../usage.dart';
 
 class CustomAppBar extends AppBar {
   final int _buttonIndex;
   final int selectedIndex;
-  final BuildContext context; // context를 멤버 변수로 추가합니다.
+  final BuildContext context;
 
   CustomAppBar(this._buttonIndex, this.selectedIndex, this.context)
       : super(
-    leading: _buttonIndex == 1 // Check if _buttonIndex is 1
-        ? null // Set leading to null if _buttonIndex is 1 to hide the back button
-        :  IconButton(
-        onPressed: () {
+    leading: _buttonIndex == 1
+        ? null
+        : IconButton(
+      onPressed: () {
         Navigator.pop(context);
-        },
-        icon: Icon(
+      },
+      icon: Icon(
         Icons.arrow_back_ios,
         size: 40,
         color: Colors.white,
@@ -23,41 +24,40 @@ class CustomAppBar extends AppBar {
     ),
     backgroundColor: Theme.of(context).colorScheme.primary,
     actions: [
-      if (_buttonIndex != 1) // Check if _buttonIndex is not 1 to show the Bag icon
+      if (_buttonIndex != 1 && _buttonIndex != 2 && selectedIndex != 1)
         IconButton(
           onPressed: () {
-            // Navigate to the Bag page when the button is pressed.
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Bag(selectedProducts: [],)),
+              MaterialPageRoute(builder: (context) => Bag(selectedProducts: [])),
             );
           },
           icon: Container(
-            width: 42, // 이미지의 너비
-            height: 42, // 이미지의 높이
+            width: 42,
+            height: 42,
             child: Stack(
               children: [
                 Image.asset(
-                  'assets/images/list.png', // 리스트 아이콘 이미지 파일의 경로
-                  width: 42, // 이미지의 너비
-                  height: 42, // 이미지의 높이
+                  'assets/images/list.png',
+                  width: 42,
+                  height: 42,
                 ),
                 Positioned(
-                  top: 0, // 동그라미의 위치를 조정하여 겹치도록 설정
-                  right: 0, // 동그라미의 위치를 조정하여 겹치도록 설정
+                  top: 0,
+                  right: 0,
                   child: Container(
-                    width: 20, // 동그라미의 너비와 높이 설정 (원하는 크기로 조정)
+                    width: 20,
                     height: 20,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xFFB41212), // 진한 빨간색
+                      color: Color(0xFFB41212),
                     ),
                     child: Center(
                       child: Text(
-                        '0', // 동그라미 안에 들어갈 내용 (원하는 텍스트로 변경 가능)
+                        '0',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 14, // 텍스트 크기 조정
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -68,31 +68,24 @@ class CustomAppBar extends AppBar {
             ),
           ),
         ),
-      IconButton(
-        onPressed: () {
-          // Navigate to the Usage or other page based on the _buttonIndex value.
-          if (selectedIndex == 0) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Usage()),
-            );
-          } else {
-            // Handle other cases based on _buttonIndex value.
-            // For example, add more conditions or navigate to different pages.
-          }
-        },
-        icon: selectedIndex == 1
-            ? Icon(
-          Icons.help,
-          size: 40,
-          color: Colors.white,
-        )
-            : Icon(
-          Icons.help_outline,
-          size: 40,
-          color: Colors.white,
+      if (selectedIndex != 1 ) // Updated condition here
+        IconButton(
+          onPressed: () {
+            if (selectedIndex == 0) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Usage()),
+              );
+            } else {
+              // Handle other cases based on _buttonIndex value.
+            }
+          },
+          icon: Icon(
+            Icons.help_outline,
+            size: 40,
+            color: Colors.white,
+          ),
         ),
-      ),
     ],
   );
 }

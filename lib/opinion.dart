@@ -170,7 +170,7 @@ class _OpinionState extends State<Opinion> {
         onItemTapped: _onItemTapped,
       ),
       floatingActionButton: GestureDetector(
-        onTap: _showDialog,
+        onTap: _showDialog, // 수정된 부분
         child: Container(
           width: 100,
           height: 50,
@@ -236,10 +236,7 @@ class _OpinionState extends State<Opinion> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Result()), // Result 클래스로 이동
-                );
+                _navigateToResultScreen(); // 수정된 부분
               },
               child: Text(
                 '확인',
@@ -252,5 +249,19 @@ class _OpinionState extends State<Opinion> {
         );
       },
     );
+  }
+
+  void _navigateToResultScreen() {
+    if (widget.checkedItems.isNotEmpty) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Result(
+            selectedOpinions: opinionData.map((item) => item.opinion).toList(),
+            selectedOpinionOrders: opinionData.map((item) => item.isSwitched).toList(),
+          ),
+        ),
+      );
+    }
   }
 }
