@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hellonong/pharmacy.dart';
+import 'package:hellonong/result.dart';
 import 'package:hellonong/symptoms.dart';
 import 'package:hellonong/widget/appbar.dart';
 import 'package:hellonong/widget/test.dart';
@@ -102,7 +103,7 @@ class _MyPageState extends State<MyPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Symptoms(),
+                            builder: (context) => MyHomePage(),
                           ),
                         ).then((value) {
                           setState(() {
