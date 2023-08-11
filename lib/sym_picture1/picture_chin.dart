@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hellonong/bag.dart';
+import 'package:hellonong/symptoms.dart';
 import 'package:hellonong/widget/appbar.dart';
 import 'package:hellonong/model/model.dart';
 import 'package:hellonong/model/head_sym.dart';
@@ -142,7 +144,7 @@ class _Picture_chinState extends State<Picture_chin> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MyHomePage(),
+              builder: (context) => Bag(selectedProducts:[]),
             ),
           );
         },

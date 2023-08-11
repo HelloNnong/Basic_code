@@ -6,6 +6,7 @@ import 'package:hellonong/model/model.dart';
 import 'package:hellonong/model/head_sym.dart';
 import 'package:hellonong/widget/bottomNavi.dart';
 
+import '../app.dart';
 import '../home.dart';
 
 class Picture_cheek extends StatefulWidget {
@@ -28,6 +29,7 @@ class _CardState extends ChangeNotifier {
 
 class _Picture_cheekState extends State<Picture_cheek> {
   int _selectedIndex = 1;
+  List<Product> selectedProducts = [];
 
   void _onItemTapped(int index) {
     switch (index) {
@@ -150,17 +152,21 @@ class _Picture_cheekState extends State<Picture_cheek> {
   }
 
   void _goToBagPage() {
-    List<Product> selectedProducts = cardStates.asMap().entries
+    List<Product> newSelectedProducts = cardStates.asMap().entries
         .where((entry) => entry.value.isChecked)
         .map((entry) {
       List<Product> products = ProductsRepository.loadProducts(Category.cheek);
       return products[entry.key];
     }).toList();
 
+    setState(() {
+      selectedProducts = newSelectedProducts;
+    });
+
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Bag(selectedProducts: selectedProducts,),
+        builder: (context) => Bag(selectedProducts: newSelectedProducts),
       ),
     );
   }
@@ -170,7 +176,9 @@ class _Picture_cheekState extends State<Picture_cheek> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
+    return ChangeNotifierProvider.value(
+        value: Provider.of<MyAppState>(context),
+    child : Scaffold(
       appBar: CustomAppBar(0, 0, context),
       body: GridView.count(
         crossAxisCount: 2,
@@ -197,6 +205,7 @@ class _Picture_cheekState extends State<Picture_cheek> {
         selectedIndex: _selectedIndex,
         onItemTapped: _onItemTapped,
       ),
+    )
     );
   }
 }

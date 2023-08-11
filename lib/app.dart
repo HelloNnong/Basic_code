@@ -43,8 +43,6 @@ class MyAppState extends ChangeNotifier {
 
   int get favoriteCount => bags.length; // 장바구니에 담은 상품의 개수를 리스트의 길이로 계산
 
-  List<String> wishids = [];
-
   void toggleBags(String name, String imageURL, String id,) {
     if (bags.contains(name)) {
       bags.remove(name);
@@ -57,5 +55,4 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
-
 }

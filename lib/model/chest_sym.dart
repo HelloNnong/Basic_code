@@ -61,16 +61,11 @@ class ProductsRepository {
       Product(
         category: Category.chest,
         id: '2-7',
-        name: '오른쪽 옆구리 통증',
+        name: '옆구리 통증',
       ),
       Product(
         category: Category.chest,
         id: '2-8',
-        name: '왼쪽 옆구리 통증',
-      ),
-      Product(
-        category: Category.chest,
-        id: '2-9',
         name: '생리 관련 증상',
       ),
       Product(

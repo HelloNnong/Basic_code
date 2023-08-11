@@ -55,7 +55,7 @@ class _BagState extends State<Bag> {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 20),
+            padding: EdgeInsets.symmetric(vertical: 0),
             child: Column(
               children: [
                 Container(
@@ -130,7 +130,7 @@ class _BagState extends State<Bag> {
                     },
                   ),
                 ),
-                SizedBox(height : screenHeight * 0.015,),
+                SizedBox(height : screenHeight * 0.008,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
