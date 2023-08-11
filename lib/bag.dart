@@ -136,7 +136,7 @@ class _BagState extends State<Bag> {
                   children: [
                     SizedBox(
                       width: screenWidth * 0.42,
-                      height: screenHeight * 0.07,
+                      height: screenHeight * 0.058,
                       child: FloatingActionButton(
                         onPressed: () {
                           Navigator.push(
@@ -157,7 +157,7 @@ class _BagState extends State<Bag> {
                     SizedBox(width : screenWidth * 0.03),
                     SizedBox(
                       width: screenWidth * 0.42,
-                      height: screenHeight * 0.0656,
+                      height: screenHeight * 0.058,
                       child: FloatingActionButton(
                         onPressed: () {
                           Navigator.push(

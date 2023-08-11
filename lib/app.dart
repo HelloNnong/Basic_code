@@ -45,7 +45,7 @@ class MyAppState extends ChangeNotifier {
 
   List<String> wishids = [];
 
-  void toggleBags(String name, String description, String imageURL, String id,) {
+  void toggleBags(String name, String imageURL, String id,) {
     if (bags.contains(name)) {
       bags.remove(name);
       imageURLs.remove(imageURL);
@@ -57,4 +57,5 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
+
 }
