@@ -51,7 +51,7 @@ class _BagState extends State<Bag> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: CustomAppBar(0, 0, context),
+      appBar: CustomAppBar(2, 0, context),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
